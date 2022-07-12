@@ -12,6 +12,25 @@ yyout=fopen("output.c","w");
 yylex();
 }
 
+
+//input.c
+
+/*C Progran to add two integers*/
+#include<stdio.h>
+void main()
+{
+int number1,number2,sum;
+
+//inputing two integers
+printf("Enter two integers:");
+scanf("%d%d",&number1,&number2);
+
+//calculating sum
+sum=number1+number2;
+printf("sum=%d",sum);
+}
+
+
 //Program6b.l
 
 %{
@@ -68,6 +87,18 @@ void yyerror()
 printf("EEK,parse error! Message: ");
 exit(0);
 }
+
+
+//demo.c
+
+void main()
+{
+int a=10;
+if(a==10)
+printf("True");
+else printf("False");
+}
+
 
 //Steps for execution
 // yacc -d progname.y

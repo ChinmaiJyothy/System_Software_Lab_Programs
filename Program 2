@@ -1,0 +1,43 @@
+//Program2.l
+
+%{
+#include"y.tab.h"
+%}
+%%
+a     { return A; }
+b     { return B; }
+[\n]  { return '\n';}
+%%
+
+//Program2.y
+
+%{
+#include<stdio.h>
+#include<stdlib.h>
+%}
+
+%token A B
+%%
+input:s '\n' {printf("Successful Grammar \n");exit(0);}
+s: A M B| B
+M: A M | ;
+%%
+
+int main()
+{
+printf("Enter a String\n");
+yyparse();
+}
+
+intyyerror()
+{
+printf("Error \n");
+exit(0);
+}
+
+
+/* Steps for execution:
+yacc -d progname.y
+lex progname.l
+cc y.tab.h lex.yy.c -ll
+./a.out */
